@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "lib": ["es6", "dom"],
+    "types": ["cypress", "node"],
+    "allowJs": true,
+    "checkJs": true,
+    "typeRoots": ["./support"]
+  },
+  "include": ["./**/*.ts", "../**/*.ts", "**/*.ts"],
+  "exclude": [
+    "../node_modules"
+  ]
+}
