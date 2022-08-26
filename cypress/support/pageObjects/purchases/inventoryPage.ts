@@ -1,4 +1,4 @@
-import { InventoryItem } from "../../selectors/purchases/inventoryPage";
+import {InventoryItem, inventoryPage} from "../../selectors/purchases/inventoryPage";
 import {Page} from "../common/page";
 
 export class InventoryPage extends Page {
@@ -17,7 +17,7 @@ export class InventoryPage extends Page {
     }
 
     removeAllItems() {
-        cy.getByPartial('remove-sauce-labs').isVisible().click({ multiple: true });
+        cy.getByTestIdLike('remove-sauce-labs').isVisible().click({ multiple: true });
     }
 
     isLoaded() {
@@ -29,7 +29,7 @@ export class InventoryPage extends Page {
         let priceSum: number = 0;
         return (items).forEach((el) => {
             return cy.getByTestId(`remove-sauce-labs-${el}`)
-                .siblings('.inventory_item_price')
+                .siblings(inventoryPage.itemPrice)
                 .isVisible()
                 .invoke('text')
                 .then((txt) => {
