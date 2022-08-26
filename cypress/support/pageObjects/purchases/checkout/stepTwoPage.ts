@@ -9,6 +9,18 @@ export class StepTwoPage extends Page {
         return cy.getByTestId(stepTwoPage.finishBtn);
     }
 
+    compareItemsPriceAndSubtotalPrice() {
+        return cy.get(stepTwoPage.subtotalPrice)
+            .isVisible()
+            .invoke('text')
+            .then((txt) => {
+                const subtotalPrice = parseFloat(txt.match(/(\d*\.)?\d+/gm).toString());
+                cy.task('getFromCache', 'priceSum').then((priceSum) => {
+                   cy.wrap(priceSum).should('equal', subtotalPrice);
+                });
+            });
+    }
+
     submit() {
         this.finishBtn.isVisible().click();
     }

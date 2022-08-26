@@ -23,6 +23,4 @@ export abstract class Page implements IPage {
         this.header.isVisible().should('have.text', this.title);
         cy.url().should('contain', this.url);
     }
-
-
 }

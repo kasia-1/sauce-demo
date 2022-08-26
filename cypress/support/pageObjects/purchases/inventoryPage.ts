@@ -24,4 +24,22 @@ export class InventoryPage extends Page {
         super.isLoaded();
         this.hamburgerMenu.isVisible();
     }
+
+    getItemsSumPrice(items: InventoryItem[]) {
+        let priceSum: number = 0;
+        return (items).forEach((el) => {
+            return cy.getByTestId(`remove-sauce-labs-${el}`)
+                .siblings('.inventory_item_price')
+                .isVisible()
+                .invoke('text')
+                .then((txt) => {
+                    const itemPrice = parseFloat(txt.match(/(\d*\.)?\d+/gm).toString());
+                    priceSum += itemPrice;
+                    cy.task('putInCache', {
+                        key: 'priceSum',
+                        data: priceSum,
+                    });
+                });
+        });
+    }
 }

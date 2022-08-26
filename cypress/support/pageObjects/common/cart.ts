@@ -17,6 +17,6 @@ export class Cart {
     }
 
     isEmpty() {
-        cy.get(page.cartItemCounter).isVisible().should('not.exist');
+        cy.get(page.cartItemCounter).should('not.exist');
     }
 }

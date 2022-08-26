@@ -1,3 +1,4 @@
 export const stepTwoPage = {
-    finishBtn: 'finish'
+    finishBtn: 'finish',
+    subtotalPrice: '.summary_subtotal_label'
 };
