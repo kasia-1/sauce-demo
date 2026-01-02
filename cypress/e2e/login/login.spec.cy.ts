@@ -15,6 +15,14 @@ describe('The user can successfully log in only with valid credentials', () => {
     loginPage.form.submit();
     inventoryPage.isLoaded();
   });
+  it('The user is still logged in after refreshing the page', () => {
+    loginPage.form.enterUsername(loginPage.form.username);
+    loginPage.form.enterPassword(loginPage.form.password);
+    loginPage.form.submit();
+    inventoryPage.isLoaded();
+    cy.reload();
+    inventoryPage.isLoaded();
+  });
   it('The user can\'t log in without username and password', () => {
     loginPage.form.submit();
     loginPage.errorPopup.isVisible();
