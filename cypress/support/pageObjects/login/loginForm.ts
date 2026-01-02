@@ -18,6 +18,12 @@ export class LoginForm {
         return cy.getByTestId(loginPage.loginButton);
     }
 
+    loginFormIsVisible() {
+        this.usernameInput.isVisible();
+        this.passwordInput.isVisible();
+        this.loginButton.isVisible();
+    }
+
     submit() {
         this.loginButton.click();
     }
