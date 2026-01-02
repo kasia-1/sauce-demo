@@ -16,10 +16,6 @@ export class InventoryPage extends Page {
         cy.getByTestId(`add-to-cart-sauce-labs-${item}`).scrollIntoView().isVisible();
     }
 
-    removeAllItems() {
-        cy.getByTestIdLike('remove-sauce-labs').isVisible().click({ multiple: true });
-    }
-
     isLoaded() {
         super.isLoaded();
         this.hamburgerMenu.isVisible();
