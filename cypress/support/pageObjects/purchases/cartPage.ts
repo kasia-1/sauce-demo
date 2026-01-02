@@ -1,5 +1,6 @@
 import { cartPage } from "../../selectors/purchases/cartPage";
 import { Page } from "../common/page";
+import {InventoryItem} from "../../selectors/purchases/inventoryPage";
 
 export class CartPage extends Page {
     public title: string = 'Your Cart'
@@ -19,5 +20,20 @@ export class CartPage extends Page {
 
     goToCheckout() {
         this.checkoutBtn.scrollIntoView().isVisible().click();
+    }
+
+    itemHasCorrectPrice(itemIndex: number) {
+        cy.task('getFromCache', 'priceSum').then((priceSum) => {
+        return this.cartList
+            .eq(itemIndex)
+            .isVisible()
+            .should('contain.text', priceSum)
+            .invoke('text')
+            });
+    }
+
+    removeItem(item: InventoryItem) {
+        cy.getByTestId(`remove-sauce-labs-${item}`).scrollIntoView().isVisible().click();
+        cy.getByTestId(`remove-sauce-labs-${item}`).should('not.exist');
     }
 }
