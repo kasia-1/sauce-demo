@@ -14,7 +14,7 @@ describe('Product details', () => {
     });
 
     it('The user can open the product details by clicking on it on the list', () => {
-        inventoryItemPage.clickOnTheItemTitle(InventoryItem.backpack);
+        inventoryPage.clickOnTheItemTitle(InventoryItem.backpack);
         inventoryItemPage.isLoaded();
         inventoryItemPage.urlContainsItemId();
     });
