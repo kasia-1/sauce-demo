@@ -10,6 +10,11 @@ export class InventoryItemPage extends InventoryPage {
     }
 
     clickOnTheItemTitle(item: InventoryItem) {
+        cy.getByTestId(`inventory-item-sauce-labs-${item}-img`).parent('a').invoke('attr', 'data-test')
+            .then(val => {
+                const id = val.match(/item-(\d+)-img-link/)[1]
+                cy.wrap(id).as('itemId')
+            });
         return cy.getByTestId(`inventory-item-sauce-labs-${item}-img`).isVisible().click();
     }
 
