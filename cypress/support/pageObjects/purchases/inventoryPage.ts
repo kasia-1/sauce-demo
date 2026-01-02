@@ -16,10 +16,6 @@ export class InventoryPage extends Page {
         cy.getByTestId(`add-to-cart-sauce-labs-${item}`).scrollIntoView().isVisible();
     }
 
-    removeAllItems() {
-        cy.getByTestIdLike('remove-sauce-labs').isVisible().click({ multiple: true });
-    }
-
     isLoaded() {
         super.isLoaded();
         this.hamburgerMenu.isVisible();
@@ -41,5 +37,14 @@ export class InventoryPage extends Page {
                     });
                 });
         });
+    }
+
+    clickOnTheItemTitle(item: InventoryItem) {
+        cy.getByTestId(`inventory-item-sauce-labs-${item}-img`).parent('a') .invoke('attr', 'data-test')
+            .then(val => {
+                const id = val.match(/item-(\d+)-img-link/)[1]   // -> "4"
+                cy.wrap(id).as('itemId')
+            });
+        return cy.getByTestId(`inventory-item-sauce-labs-${item}-img`).isVisible().click();
     }
 }
