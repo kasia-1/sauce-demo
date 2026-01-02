@@ -24,7 +24,7 @@ export class CompletePage extends Page {
     isLoaded() {
         super.isLoaded();
         this.image.isVisible();
-        this.noteHeader.isVisible().hasText('THANK YOU FOR YOUR ORDER');
+        this.noteHeader.isVisible().hasText('Thank you for your order!');
         this.note.isVisible().hasText('Your order has been dispatched, and will arrive just as fast as the pony can get there!');
         this.backBtn.scrollIntoView().isVisible();
     }
