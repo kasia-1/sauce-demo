@@ -1,8 +1,8 @@
 export const inventoryPage = {
     itemPrice: '.inventory_item_price',
+    backToProductsLink: 'back-to-products',
     itemName: 'inventory-item-name',
     item: 'inventory-item',
-    backToProductsLink: 'back-to-products',
 };
 
 export enum InventoryItem {
